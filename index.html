@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Share</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="hero">
+      <div class="logo">📷</div>
+      <h1>Camera Share</h1>
+      <p>Consent-based live camera sharing</p>
+    </header>
+
+    <!-- HOME / HOST -->
+    <section id="home" class="card">
+
+      <h2>Create a Camera Room</h2>
+
+      <p class="muted">
+        Room बनाएं और link उस व्यक्ति को भेजें
+        जिसकी camera stream आप देखना चाहते हैं।
+      </p>
+
+      <button id="createBtn" class="primary">
+        Create Room
+      </button>
+
+    </section>
+
+
+    <!-- GUEST -->
+    <section id="guest" class="card hidden">
+
+      <div class="notice">
+
+        <strong>🔐 आपकी अनुमति जरूरी है</strong>
+
+        <p>
+          “Yes, Share Camera” दबाने और browser में
+          Camera permission <strong>Allow</strong> करने
+          के बाद ही आपका camera दूसरे व्यक्ति को
+          live दिखाई देगा।
+        </p>
+
+      </div>
+
+
+      <button id="shareBtn" class="primary">
+        ✅ Yes, Share Camera
+      </button>
+
+      <p id="status" class="status"></p>
+
+
+      <div id="localWrap" class="video-wrap hidden">
+
+        <span class="label">
+          आपका camera
+        </span>
+
+        <video
+          id="localVideo"
+          autoplay
+          playsinline
+          muted>
+        </video>
+
+      </div>
+
+    </section>
+
+
+    <!-- HOST -->
+    <section id="host" class="card hidden">
+
+      <h2>Host</h2>
+
+      <div id="hostStatus" class="status">
+        Room तैयार किया जा रहा है...
+      </div>
+
+
+      <div id="inviteBox" class="invite hidden">
+
+        <label for="inviteLink">
+          Guest link
+        </label>
+
+        <div class="link-row">
+
+          <input
+            id="inviteLink"
+            readonly>
+
+          <button
+            id="copyBtn"
+            class="secondary">
+            Copy
+          </button>
+
+        </div>
+
+        <p class="small">
+          यह link केवल उस व्यक्ति को भेजें
+          जिससे camera share करवाना है।
+        </p>
+
+      </div>
+
+
+      <div class="video-wrap">
+
+        <span class="label">
+          Guest का live camera
+        </span>
+
+        <video
+          id="remoteVideo"
+          autoplay
+          playsinline>
+        </video>
+
+        <div
+          id="remotePlaceholder"
+          class="placeholder">
+
+          ⏳ Guest के camera की waiting...
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ERROR -->
+    <section
+      id="errorBox"
+      class="card error hidden">
+
+      <strong>
+        Something went wrong
+      </strong>
+
+      <p id="errorText"></p>
+
+    </section>
+
+  </main>
+
+
+  <script
+    type="module"
+    src="script.js">
+  </script>
+
+</body>
+</html>
